@@ -1,0 +1,95 @@
+* {
+  border: none; // Break default styling applied to input buttons
+}
+
+
+body {
+	color: $black;
+	font-family: $font-body;
+	font-size: 16px;
+	line-height: 1.6;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+	z-index: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: $font-main;
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+h2 {
+	font-size: 30px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+//Forms
+#{$all-text-inputs} {
+  	border: 1px solid $black;
+  	padding: 10px;
+}
+
+#{$all-text-inputs-focus},
+#{$all-text-inputs-hover},
+#{$all-text-inputs-active}  {
+  	border: 1px solid $black;
+}
+
+//Buttons
+#{$all-buttons} {
+	background-color: $main-color;
+	color: #fff !important;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+#{$all-buttons-focus},
+#{$all-buttons-hover},
+#{$all-buttons-active} {
+
+	background-color: #fff !important;
+	color: $main-color !important;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+nav {
+	ul {
+		list-style: none;
+
+	}
+
+	li {
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	a {
+		padding: 0 10px;
+
+	
+		&:hover {
+			color: $main-color;
+		}
+	}
+
+}
+
+a {
+	text-decoration: none;
+	color: $black;
+}
+
+p {
+	font-size: 1em;
+}
