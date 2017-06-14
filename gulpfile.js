@@ -16,7 +16,16 @@ var gulp = require('gulp'),
 
 		Description: Concatenates files
 	*/
-	concat = require('gulp-concat');
+	concat = require('gulp-concat'),
+
+	/*
+		Add a new package called gulp-browserify
+		
+		https://www.npmjs.com/package/gulp-browserify
+
+		Description: Bundle modules with BrowserifyJS
+	*/
+	browserify = require('gulp-browserify');
 
 	/*
 		Create an array that includes all the javascript files 
@@ -35,9 +44,11 @@ gulp.task('js', function() {
 	/* 
 		Specify sources(jsSources)
 		Concatnate them into a file (script.js)
+		Bundle modules with Browserify
 		Specify destination folder ('builds...')
 	*/
 	gulp.src(jsSources)
 		.pipe(concat('script.js'))
+		.pipe(browserify())
 		.pipe(gulp.dest('builds/development/js'))
 });

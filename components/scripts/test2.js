@@ -1,1 +1,1 @@
-test2.js
+var $ = require('jquery');
