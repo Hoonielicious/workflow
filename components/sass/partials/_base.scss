@@ -33,36 +33,6 @@ h3 {
 	font-size: 26px;
 }
 
-//Forms
-#{$all-text-inputs} {
-  	border: 1px solid $black;
-  	padding: 10px;
-}
-
-#{$all-text-inputs-focus},
-#{$all-text-inputs-hover},
-#{$all-text-inputs-active}  {
-  	border: 1px solid $black;
-}
-
-//Buttons
-#{$all-buttons} {
-	background-color: $main-color;
-	color: #fff !important;
-	padding: 10px 20px;
-	cursor: pointer;
-}
-
-#{$all-buttons-focus},
-#{$all-buttons-hover},
-#{$all-buttons-active} {
-
-	background-color: #fff !important;
-	color: $main-color !important;
-	padding: 10px 20px;
-	cursor: pointer;
-}
-
 nav {
 	ul {
 		list-style: none;
