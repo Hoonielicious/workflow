@@ -1,3 +1,8 @@
+// Gulp API docs : https://github.com/gulpjs/gulp/blob/master/docs/API.md
+
+
+
+
 // Tell npm to bring in gulp library and assign it to the variable
 var gulp = require('gulp'),
 	/*
@@ -68,6 +73,7 @@ gulp.task('compass', function() {
 	/* 
 		Specify sources(sassSources)
 		Compile the source file with Compass
+		Load config without config.rb
 		Specify destination folder ('builds...')
 	*/
 	gulp.src(sassSources)
@@ -79,3 +85,6 @@ gulp.task('compass', function() {
 		.on('error', gutil.log)
 		.pipe(gulp.dest('builds/development/css'))
 });
+
+// Issue tasks in sequence and by default
+gulp.task('default', ['js', 'compass']);
