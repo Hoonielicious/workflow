@@ -60,6 +60,8 @@ var jsSources = [
 
 var sassSources = ['components/sass/styles.scss'];
 
+var htmlSources = ['builds/development/*.html'];
+
 // Log something during task with gulp-util package
 gulp.task('log', function() {
 	gutil.log("Workflows are awesome!")
@@ -104,6 +106,7 @@ gulp.task('compass', function() {
 gulp.task('watch', function() {
 	gulp.watch('components/sass/**/*.scss', ['compass']);
 	gulp.watch(jsSources, ['js']);
+	gulp.watch(htmlSources, ['html']);
 });
 	
 	/*
@@ -116,5 +119,13 @@ gulp.task('connect', function() {
 	});
 });
 
+	/*
+		Reloads html file
+	*/
+gulp.task('html', function() {
+	gulp.src(htmlSources)
+		.pipe(connect.reload());
+});
+
 // Issue tasks in sequence and by default
-gulp.task('default', ['js', 'compass', 'connect', 'watch']);
+gulp.task('default', ['html', 'js', 'compass', 'connect', 'watch']);
