@@ -39,7 +39,16 @@ var gulp = require('gulp'),
 
 		Description: Compile Sass to CSS using Compass
 	*/
-	compass = require('gulp-compass');
+	compass = require('gulp-compass'),
+
+	/*
+		Add a new package called gulp-connect to start a server
+
+		https://www.npmjs.com/package/gulp-connect
+
+		Description: Gulp plugin to run a webserver (with LiveReload)
+	*/
+	connect = require('gulp-connect');
 
 	/*
 		Create an array that includes all the javascript files 
@@ -67,6 +76,7 @@ gulp.task('js', function() {
 		.pipe(concat('script.js'))
 		.pipe(browserify())
 		.pipe(gulp.dest('builds/development/js'))
+		.pipe(connect.reload())
 });
 
 gulp.task('compass', function() {
@@ -84,7 +94,27 @@ gulp.task('compass', function() {
 		}))
 		.on('error', gutil.log)
 		.pipe(gulp.dest('builds/development/css'))
+		.pipe(connect.reload())
+});
+
+	/* 
+		watch task: watches source files and execute taks within brackets.
+		Notice the way every scss file is under watch. 
+	*/
+gulp.task('watch', function() {
+	gulp.watch('components/sass/**/*.scss', ['compass']);
+	gulp.watch(jsSources, ['js']);
+});
+	
+	/*
+		Starts a server and live reloads
+	*/
+gulp.task('connect', function() {
+	connect.server({
+		root: 'builds/development/',
+		livereload: true
+	});
 });
 
 // Issue tasks in sequence and by default
-gulp.task('default', ['js', 'compass']);
+gulp.task('default', ['js', 'compass', 'connect', 'watch']);
